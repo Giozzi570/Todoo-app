@@ -1,0 +1,52 @@
+---
+import Layout from '../layout/Layout.astro';
+---
+
+<Layout title="Todoo-app">
+    <div class="flex justify-center items-center flex-col border-[1px] border-black rounded-md p-12">
+        <h1 class="text-2xl">Todoo app</h1>
+        <div>
+            <input class="border-2 border-black rounded-md px-3 py-1" type="text" id="input-text" placeholder="Escribe aquí tus tareas ">
+            <button type="submit" class="bg-blue-500 p-2 rounded-2xl" id="create-element">Enviar</button>
+        </div>
+        <div class="w-96 h-auto m-8">
+            <ul class="flex items-center flex-col border-black border-2 rounded-md p-4" id="ul-lista">
+            </ul>
+            <button type="submit" class="bg-blue-500 p-2 rounded-2xl text-center w-full my-6" id="delete-element">Borrar</button>
+        </div>
+    </div>
+<script>
+    const createElement = document.getElementById("create-element");
+    const ulLista = document.getElementById('ul-lista');
+    const texto = document.getElementById('input-text');
+    const deleteElement = document.getElementById("delete-element");
+
+    createElement.addEventListener('click', e => {
+        const newElement = document.createElement('li');
+        const valorDeTexto = texto.value.trim();
+        newElement.textContent = texto.value;
+        const newElement2 = document.createElement('input');
+        newElement.style.marginRight = "5px"
+        newElement.classList.add('new-element');
+
+        ulLista.appendChild(newElement);
+        if(valorDeTexto != ''){
+            newElement2.type = "checkbox"
+            newElement.appendChild(newElement2);
+        }
+        else{
+            alert("Escriba algo")
+        }
+        deleteElement.addEventListener('click', e => {
+            if(newElement2.checked){
+                newElement.remove()
+        }
+        else{
+
+        }
+    })
+    
+
+        })
+</script>
+</Layout>
